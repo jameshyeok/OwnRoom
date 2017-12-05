@@ -1,0 +1,63 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+div#container {
+    width: 100%;
+}
+
+div#find-place-container {
+    width: 250px;
+    margin: 0 auto;
+}
+
+ul#find-place-results {
+    width: 200px;
+    height: 300px;
+    overflow: scroll;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+ul#find-place-results li {
+    border: solid #ccc 1px;
+    padding: 9px 6px;
+    border-bottom: none;
+    font-size: 10px;
+}
+
+ul#find-place-results li:hover {
+    background-color: #ccc;
+    color: white;
+}
+
+ul#find-place-results li:nth-last-child(1) {
+    border: solid #ccc 1px;
+}
+
+ul#find-place-results li:first-child {
+    border-top: none;
+}
+
+button {
+    float: right;
+}
+
+input {
+    padding: 0px;
+    margin: 0px;
+}
+
+input#input-find-place {
+    width: 200px;
+    border: solid #ccc 1px;;
+    padding: 3px 6px;
+}
+
+.item {
+    background-color: #cccccc;
+    color: #ffffff;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            display: block;
+        }
+
+        header {
+            z-index: 6;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 53px;
+            display: block;
+            border-bottom: 1px solid #dbdbdb;
+            background: #ffffff;
+        }
+
+        header .top-bar-wrap {
+            width: 940px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+        }
+
+        header h1 a {
+            color: #1081ff;
+        }
+
+        header .btn_login {
+            position: absolute;
+            top: 17px;
+            right: 30px;
+        }
+
+        .btn_login {
+            color: #1081ff;
+            vertical-align: middle;
+            outline:0;
+        }
+
+        #searchView {
+            position: relative;
+            z-index: 1;
+            height: 50px;
+            margin: 0 50px 0 150px;
+            padding-top: 10px;
+            cursor: default;
+        }
+
+        #searchView input[type=text] {
+            position: relative;
+            z-index: 1;
+            width: 50%;
+            height: 32px;
+            padding-right: 40px;
+            padding-left: 10px;
+            border: 1px solid #1081ff;
+            border-radius: 2px;
+            color: #1081ff;
+            line-height: 32px;
+        }
+
+        #container {
+            padding-top: 60px;
+            position: relative;
+            height: 1080px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        #wrapContainer {
+            background: #ffffff;
+            width: 1080px;
+            height: 800px;
+            margin-left: 100px;
+        }
+
+        body {
+            background: #e8e8e8;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="top-bar-wrap">
+        <h1>
+            <a href="/">OWNROOM</a>
+        </h1>
+        <div id="searchView">
+            <input type="text" class="txt" value="지하철역 또는 검색">
+        </div>
+        <input type="button" class="btn_login" value="로그인" id="loginBtn" onclick="login()">
+    </div>
+</header>
+<div id="container">
+    <div id="wrapContainer"></div>
+</div>
+<script>
+    function login() {
+        location.href = 'naverlogin';s
+    }
+</script>
+</body>
+</html>

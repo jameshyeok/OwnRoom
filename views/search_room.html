@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #map {
+            width: 900px;
+            height: 900px;
+            display: inline-block;
+        }
+
+        #roomList {
+            width: 300px;
+            height: 900px;
+            display: inline-block;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<div id="roomList">
+</div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e8be546e7a956ccf7194cbf68021555e"></script>
+<script src="js/lib/jquery-3.2.1.min.js"></script>
+<script>
+    var positions = [];
+    $.ajax({
+        type: 'GET',
+        url: '/getRoomData',
+        data: '',
+        success: function(results) {
+            console.log(results);
+            results.forEach(function(result, index){
+                var data = {
+                    title: result.name,
+                    latlng: new daum.maps.LatLng(result.latitude, result.lngitute)
+                }
+                positions.push(data);
+            });
+            var url = location.href.split("?"),
+                query = url[1].split("&"),
+                coordinate = {
+                    lat: query[0].split("=")[1],
+                    lng: query[1].split("=")[1]
+                };
+            console.log("lat: " + coordinate.lat + " lng: " + coordinate.lng);
+            var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+            var options = { //지도를 생성할 때 필요한 기본 옵션
+                center: new daum.maps.LatLng(coordinate.lat, coordinate.lng), //지도의 중심좌표.
+                level: 5 //지도의 레벨(확대, 축소 정도)
+            };
+
+            var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+            // 마커 이미지의 이미지 주소입니다
+            var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+            for (var i = 0; i < positions.length; i ++) {
+
+                // 마커 이미지의 이미지 크기 입니다
+                var imageSize = new daum.maps.Size(24, 35);
+
+                // 마커 이미지를 생성합니다
+                var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
+                // 마커를 생성합니다
+                var marker = new daum.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: positions[i].latlng, // 마커를 표시할 위치
+                    title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                    image : markerImage // 마커 이미지
+                });
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
